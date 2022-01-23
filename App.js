@@ -1,4 +1,6 @@
 import React from 'react';
+import Camera from './components/Camera';
+
 import { View } from 'react-native';
 import { Modal, Portal, Text, Provider, Card, Title, Paragraph, Divider } from 'react-native-paper';
 import { launchImageLibrary } from 'react-native-image-picker';
@@ -119,6 +121,7 @@ const App = () => {
   return (
     <View style={{flex: 1}}>
       <Provider>
+        <Camera />
         <Portal>
           <Modal visible={helpVisible} onDismiss={hideHelpModal} contentContainerStyle={containerStyle}>
             <Text>To use this app, simply point your camera at a clothing label and press the camera icon below. You can also choose an image from your device by pressing the gallery icon.</Text>
