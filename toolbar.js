@@ -19,7 +19,7 @@ const Toolbar = ({onPressCamera, onPressGallery, onPressHelp, onReturn, resVisib
   
   {resVisible && 
     <React.Fragment>
-        <Button mode='contained' style={{backgroundColor: '#333', alignSelf: 'stretch', marginHorizontal: 15}} onPress={onReturn}>Return</Button>
+        <Button mode='contained' style={{backgroundColor: '#333', flex: 1, marginHorizontal: 15}} onPress={onReturn}>Return</Button>
     </React.Fragment>}
   </Appbar>
 };

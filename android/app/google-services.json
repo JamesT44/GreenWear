@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:545086311432:android:8881d8502646ac131cd5bd",
+        "mobilesdk_app_id": "1:545086311432:android:a9d275406a9ff4c81cd5bd",
         "android_client_info": {
-          "package_name": "com.clotheslabelscanner"
+          "package_name": "com.greenwear"
         }
       },
       "oauth_client": [

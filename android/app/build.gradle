@@ -132,7 +132,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.clotheslabelscanner"
+        applicationId "com.greenwear"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -154,6 +154,12 @@ android {
             storePassword 'android'
             keyAlias 'androiddebugkey'
             keyPassword 'android'
+        }
+        release {
+            storeFile file('greenwear.keystore')
+            storePassword '123456'
+            keyAlias 'greenwear'
+            keyPassword '123456'
         }
     }
     buildTypes {
@@ -230,3 +236,15 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
+subprojects { subproject ->
+    afterEvaluate{
+      if(subproject.name == "react-native-camera" ){
+        dependencies {
+          compile ("com.google.android.gms:play-services-vision:11.8.0") {
+            force = true;
+          }
+        }
+      }
+    }
+}
