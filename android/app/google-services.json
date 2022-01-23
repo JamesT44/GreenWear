@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "545086311432",
+    "project_id": "clotheslabelscanner",
+    "storage_bucket": "clotheslabelscanner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545086311432:android:8881d8502646ac131cd5bd",
+        "android_client_info": {
+          "package_name": "com.clotheslabelscanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545086311432-aevvumh9gaolr6cn3udf528k4an2i64h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcZlh1QpLz00xAqpOlCNTyTKU2AZFJ6Ts"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545086311432-aevvumh9gaolr6cn3udf528k4an2i64h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
