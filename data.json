@@ -1,0 +1,57 @@
+[
+    {
+        "material": "cotton",
+        "score": 0.6,
+        "description": "While cotton is a natural fibre that can biodegrade at the end of its life and, in comparison, it is also one of the most environmentally demanding crops."
+    },
+    {
+        "material": "viscose",
+        "score": 0.7,
+        "description": "Viscose is a very sustainable alternative to cotton or polyester."
+    },
+    {
+        "material": "polyester",
+        "score": 0.2,
+        "description": "Not only are synthetics not biodegradable, they all rely on the petrochemical industries for their raw material, meaning this fashion industry staple is dependent on fossil fuel extraction."
+    },
+    {
+        "material": "elastane",
+        "score": 0.1,
+        "description": "Elastane is made from fossil fuels, which are nonrenewable resources that take millions of years to form. The making of elastane is also a chemical-heavy process that has caused devastating health problems. "
+    },
+    {
+        "material": "wool",
+        "score": 0.9,
+        "description": "Protein-based fibres like wool account for less than two per cent of all fibres used and, if produced without using or retaining any substances of concern, they can be safely biodegraded."
+    },
+    {
+        "material": "silk",
+        "score": 0.5,
+        "description": "Silk has a mixed environmental impact - it is a natural fibre and will biodegrade and can be produced in sustainable ways. While this does not necessarily mean silk products are produced in this way, the material itself is sustainable."
+    },
+    {
+        "material": "leather",
+        "score": 0.4,
+        "description": "The animal skin used to make leather comes from animals raised for their meat. In that sense, it uses a byproduct from another industry and so is sustainable in that it does not actually need additional land and resources. "
+    },
+    {
+        "material": "dylon",
+        "score": 0.75,
+        "description": "Conventional nylon is not biodegradable and improper disposal can lead to further microplastic contaminination. As a result, nylon is not particularly sustainable and there are many more sustainable alternatives."
+    },
+    {
+        "material": "acetate",
+        "score": 0.2,
+        "description": "Acetate is a semi-synthetic fibre which is not biodegradable and releases harmful microplastics. Hence, acetate is not a very sustainable material."
+    },
+    {
+        "material": "acrylic",
+        "score": 0.8,
+        "description": "Acrylic is very eco-friendy and is highly recyclable, without loss of condition and is very durable."
+    },
+    {
+        "material": "hemp",
+        "score": 1,
+        "description": "AKA the most versatile plant on the planet. Hemp is the only plant that can feed you, clothe you, create a home for you, and provide you with natural beauty products."
+    }
+]

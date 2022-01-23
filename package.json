@@ -17,6 +17,7 @@
     "react-native": "0.67.1",
     "react-native-image-picker": "^4.7.1",
     "react-native-paper": "^4.11.2",
+    "react-native-progress-circle": "^2.1.0",
     "react-native-vector-icons": "^9.0.0",
     "typescript": "^4.5.5"
   },

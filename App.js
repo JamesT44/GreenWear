@@ -1,17 +1,15 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Modal, Portal, Text, Button, Provider } from 'react-native-paper';
+import { Modal, Portal, Text, Provider, Card, Title, Paragraph, Divider } from 'react-native-paper';
 import { launchImageLibrary } from 'react-native-image-picker';
+import ProgressCircle from 'react-native-progress-circle'
 import vision from '@react-native-firebase/ml-vision';
 
 import Toolbar from './toolbar';
 
-const mockData = [["Skoljka Kabuk Material exterior/ Külső", "reteg/ /Buitenkant/ MeMopana", "lepiBAnua/ páälinen / Skal /Plst", "Virspuse 1Virsutinis sluoksnis /l-parti ta", "bara OCHOBHa TKaHHHa /Ljuska / Skelet", "(guackee)", "64% Viscose / Viskose Viscosa fWokno", "wiskozowe Viskoos / Bucaxosa Viskoza", "Viskoz /Váscoza Viszkóz 3 /BOKOTn", "(TEVnToueTdE)/ Viskoosi / Viskos", "Viskoza /Viskoze/Viskozé/Visk/ Bicxosa /", "Material viskoz", "31% Polyester/Polieéster/ Poliester/", "Poliestere/ Polūester/ Nonaoup", "Poliészter/ flonnectep", "TTOAUEOTEtpaç/ Polyesteri/ Poliesteris", "TaniecTep/Poliestër", "5% Elastane/Elastan/Elastano/Elasthan/", "Elastaan / Élastharne/3nacraH/Elasztán", "/Eracra/EaoToLEpns", "moAUOupEedvn/Elastaani/ Elastāns", "Elastanas", "exclusive of decoration/gamiture non", "comprise"],
-["STrLE NO JP-56", "SHELL 100% NYLON", "BODY HOOD LINING", "100% POLYESTER", "SLEEVE LINING", "100% POLYESTER", "SITENO", "JP 56", "RESIN OATED"],
-["SHELL/ENVELOPPE/BUITENK", "EXTERIOR/HEJ/PLAST/SVRCH", "EXTERIOR/YTRA BYROI/WARS", "ETRZNA/AUSSENMATERIAL", "RIVESTIMENTO ESTERNO/KES", "ISORINIS SLUOKSNIS:", "100 % NYLON/NYLON/NYLON", "NYLON/NEJLON/NYLON", "NYLON/NÆLON/NYLON", "NAIAON/NYLON/NAILON/", "NAILONAS", "LINING/DOUBLURE/VOERING/POD", "FORRO/BELES/PODSIVKA/PODSIVK", "REVESTIMENTO/FOdUR/MATERIAŁ", "SCIOŁKI/FUTTER/DOAPA/FODERA/", "VOODER/ODERE/PAMUSALAS:", "100 % POLYESTER/POLYESTER/POLY", "POLIESTER/POLIESTER/POLIES", "POLYESTER/POLYESTER/POLIÉ-", "PÓLYESTER/POLIESTER/POLYES", "nOAYEETEPAZ/POLIESTERE", "POLUESTER/POLIESTERS", "POLIESTERIS."],
-["ONLY a SONS", "ONLY &sONS", "ww.onlyandsons.con", "le name/Nom de style", "onsTONY CARGO SHORTS AOP GW 9923", "Dessin/Modele 22009923", "on MypkGKon", "arerapns lopTbi", "EU Size: 32 Taille EU 32", "EU VELICINA: 32/32", "OVR number: 88216512", "CA number/Numéro de TVA: 57831", "RN number 149349", "WUx coN", "Made in China / Hergestellt in", "China abricado en China /", "Fabricado na China /Prodotto in", "Cina ( Wyprodukowano w Chiny", "Fremstileti Kina / Walmistatud", "Hinas / Fabrigué en Chine", "enaHo Kran / lzradenou Kini", "arejen na KitajskemCin'de", "edmistir 1 Fabricat In China", "2armazasi hely Kina/ Dibuat d", "nal Vervaardigd", "ina pouanoAaHO R Kra", "dapEudiera any Ka", "ainistiuomaa Kina/ Tilverka", "na / Vyroban0 V Cnehaut", "Mna PRgrnlmo dalia a", "Maghmil io Cn/Vrabgnd y"],
-["karrimor", "S", "KEEP AWAY FROM FIRE", "TENIR ELOIGNE DES FLAMMES.uT DE", "BUURT VAN VUURLES.UIT DE", "PRIBLIZUJTE OGNJU.MAEN.NE", "ALEJADO DEL FUEGO.TARTSNER", "ATUZTOL.DRZTE V DOSAHUOO", "CHRANTE PRED OHNEM.MANTEA", "AFASTAD0 DO FOGO.HALDIo FJARRI", "ELDI.PRZECHOWYNAC Z DALA OD", "OGNIA VON FEUER FERNHALTEN.", "MAKPIA ANO TH OIA.TENERE", "LONTAN0 DAL FUOCO.HDA TULEST", "EEMALSARGAT NO UGUNS.", "SAUGOKITE NUG UGNIES", "MADE IN MYANMAR/FABRIQUE EN BIRM-", "ANIE/GEMAAKT IN MYANMAR/1ZDELANO-", "V MIANMARU/ARTICULO FABRICADO EN-", "BIRMANIA/MYANMARBAN GYARTVA/VYR-", "OBENE V MJANMARSKU/VYR0BENO V M-", "YANMARŲ/FABRICADO EM MANMAR/FR-", "AMLEITT I BURMA/WYPRODUKOWANO W-", "BIRMIE/HERGESTELLT IN MYANMAR/KATAZ-", "AP/PRODOTTO IN M-", "URMAS/RAZOTS", "NMARE", "KEYAZETA", "YAM"],
-["VIero |", "SHELL:1", "100% Polyester", "SHELL:2", "100% Polyester", "367", "MADE IN TURKEY"]]
+const data = require('./data.json');
+const materialNames = data.map(item => item.material);
+
 
 async function extractLines(localPath) {
   const processed = await vision().textRecognizerProcessImage(localPath);
@@ -35,9 +33,6 @@ const matchCountry = lines => {
 
   return null;
 }
-
-const materialNames = ['cotton', 'viscose', 'polyester', 'elastane', 'wool', 'silk', 'leather', 'nylon', 'acetate', 'acrylic', 'hemp'];
-
 const matchMaterials = lines => {
   let re = new RegExp('(\\d+) ?% (' + materialNames.join('|') + ')');
   let materials = {};
@@ -63,7 +58,21 @@ const matchMaterials = lines => {
   return materials;
 }
 
-// console.log(matchMaterials(mockData[0]));
+const getMaterialDescription = material => {
+  for (const materialObj of data) {
+    if (materialObj.material === material) {
+      return materialObj.description;
+    }
+  }
+}
+
+const getMaterialScore = material => {
+  for (const materialObj of data) {
+    if (materialObj.material === material) {
+      return materialObj.score;
+    }
+  }
+}
 
 const getGalleryImage = (callback) => {
   console.log('Getting image from gallery');
@@ -77,12 +86,21 @@ const getUri = (response) => {
   return null;
 }
 
+const capitalizeFirstLetter = str => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 const App = () => {
     
-  const [visible, setVisible] = React.useState(false);
+  const [helpVisible, setHelpVisible] = React.useState(false);
+  const [resVisible, setResVisible] = React.useState(false);
+  const [materials, setMaterials] = React.useState({});
+  const [country, setCountry] = React.useState(null);
 
-  const showModal = () => setVisible(true);
-  const hideModal = () => setVisible(false);
+  const showHelpModal = () => setHelpVisible(true);
+  const hideHelpModal = () => setHelpVisible(false);
+  const showResModal = () => setResVisible(true);
+  const hideResModal = () => setResVisible(false);
   const containerStyle = {backgroundColor: 'grey', padding: 20, margin: 15};
 
   const imageCallback = response => {
@@ -90,9 +108,10 @@ const App = () => {
     if (uri) {
       extractLines(uri).then(lines => {
         console.log('Extracted lines: ', lines);
-        let materials = matchMaterials(lines);
-        let country = matchCountry(lines);
+        setMaterials(matchMaterials(lines));
+        setCountry(matchCountry(lines));
         console.log([materials, country]);
+        showResModal();
       });
     }
   }
@@ -101,13 +120,53 @@ const App = () => {
     <View style={{flex: 1}}>
       <Provider>
         <Portal>
-          <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+          <Modal visible={helpVisible} onDismiss={hideHelpModal} contentContainerStyle={containerStyle}>
             <Text>To use this app, simply point your camera at a clothing label and press the camera icon below. You can also choose an image from your device by pressing the gallery icon.</Text>
+          </Modal>
+          <Modal visible={resVisible} contentContainerStyle={{ margin: 10}}>
+            {Object.entries(materials).sort((a, b) => {
+                let x = a[1];
+                let y = b[1];
+                return x - y;
+              }).map(([material, proportion]) => {
+                let bgColor = getMaterialScore(material) > 0.5 ? 'green' : 'red';
+                return (
+                  <Card style={{margin: 5}}>
+                    <Card.Content>
+                      <Title style={{color: bgColor}}>{Math.floor(proportion * 100)}% {capitalizeFirstLetter(material)}</Title>
+                      <Paragraph>{getMaterialDescription(material)}</Paragraph>
+                    </Card.Content>
+                  </Card>
+                );
+            })}
+            {country && <View style={{height: 15}}/>}
+            {country && <Card style={{margin: 5}}>
+              <Card.Content>
+                <Title style={{color: 'orange'}}>Country of origin: {capitalizeFirstLetter(country)}</Title>
+                <Paragraph>1200 air miles. Not bad, but could be better.</Paragraph>
+              </Card.Content>
+            </Card>}
+            <View style={{marginTop: 30, alignSelf: 'center', marginBottom: 20, flexDirection: 'row'}}>
+              <View style={{alignSelf: 'center',flexDirection: 'row', paddingBottom: 3, paddingRight: 20}}>
+                <Text style={{fontSize: 20}}>Overall score: </Text>
+              </View>
+              <ProgressCircle
+                  percent={45}
+                  radius={50}
+                  borderWidth={8}
+                  color="orange"
+                  shadowColor="#AAA"
+                  bgColor="#222"
+              >
+                <Text style={{ fontSize: 18 }}>{'45%'}</Text>
+              </ProgressCircle>
+            </View>
+            <View style={{height: 40}}/>
           </Modal>
         </Portal>
       </Provider>
 
-      <Toolbar onPressGallery={() => getGalleryImage(imageCallback)} onPressHelp={showModal}/>
+      <Toolbar onPressGallery={() => getGalleryImage(imageCallback)} onPressHelp={showHelpModal} onReturn={hideResModal} resVisible={resVisible}/>
     </View>
   );
 };
