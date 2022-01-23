@@ -3,11 +3,11 @@ import { Appbar, Button } from 'react-native-paper';
 import { StyleSheet, View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const Toolbar = ({onPressGallery, onPressHelp, onReturn, resVisible}) => {
+const Toolbar = ({onPressCamera, onPressGallery, onPressHelp, onReturn, resVisible}) => {
  return <Appbar style={styles.toolbar}>
  {!resVisible && <React.Fragment><Appbar.Action
    icon={() => <MaterialIcons name='photo-camera' size={25}/>}
-   onPress={() => console.log('Pressed snapshot')}
+   onPress={onPressCamera}
   />
   <Appbar.Action
    icon={() => <MaterialIcons name='photo-library' size={25}/>}

@@ -4,9 +4,6 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
-  Slider,
-  TouchableWithoutFeedback,
   Dimensions,
 } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
@@ -130,7 +127,7 @@ export default class CameraScreen extends React.Component {
   takePicture = async function() {
     if (this.camera) {
       const data = await this.camera.takePictureAsync();
-      console.warn('takePicture ', data);
+      return data.uri;
     }
   };
 
