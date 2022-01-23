@@ -7,12 +7,12 @@ import ProgressCircle from 'react-native-progress-circle'
 import vision from '@react-native-firebase/ml-vision';
 
 import Toolbar from './toolbar';
-import Camera from './components/Camera';
+import Camera from './components/camera';
 
-const materialsData = require('./data.json');
+const materialsData = require('./data/materials.json');
 const materialNames = materialsData.map(item => item.material);
 
-const countriesData = require('./countries.json');
+const countriesData = require('./data/countries.json');
 
 // find distance between two coords on sphere
 const haversineDistance = (coords1, coords2) => {
