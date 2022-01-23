@@ -102,6 +102,7 @@ const App = () => {
   return (
     <View style={{flex: 1}}>
       <Provider>
+        <Camera />
         <Portal>
           <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
             <Text>To use this app, simply point your camera at a clothing label and press the camera icon below. You can also choose an image from your device by pressing the gallery icon.</Text>
