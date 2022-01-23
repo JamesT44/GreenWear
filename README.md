@@ -11,7 +11,7 @@ clothing.
 
 ## INSTALLATION
 
-Download ... under release
+Download `.apk` from releases and install on an Android device.
 
 ## DEVELOPMENT INSTRUCTIONS
 
